@@ -21,6 +21,7 @@ Row = namedtuple("Row", [i.name for i in columns])
 def historical(ticker):
     url = f"https://www.nasdaq.com/symbol/{ticker}/historical"
     resp = requests.get(url)
+    print("request ended")
     soup = BeautifulSoup(resp.text, "html.parser")
     table = soup.find(
         id="historicalContainer").find_all("tr")[1:]  # remove header

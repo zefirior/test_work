@@ -10,6 +10,7 @@ def set_default(model, **kw):
 
     obj = model(**kw)
     m.db.session.add(obj)
+    m.db.session.flush()
     return obj
 
 
@@ -33,6 +34,7 @@ def link_ticker_insider(ticker, insider, row):
         owner_type=row.owner_type,
     )
     m.db.session.add(link)
+    m.db.session.flush()
     return link
 
 
@@ -47,6 +49,7 @@ def insert_price(ticker, row):
         volume=row.volume,
     )
     m.db.session.add(obj)
+    m.db.session.flush()
     return obj
 
 
@@ -59,4 +62,5 @@ def insert_trade(insider_ticker, transaction_type, row):
         shares_held=row.shares_held,
     )
     m.db.session.add(obj)
+    # m.db.session.flush()
     return obj

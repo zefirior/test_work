@@ -1,7 +1,7 @@
 import time
 import traceback
 from collections import deque
-from threading import Thread, Lock
+from threading import Thread, RLock
 
 
 class Manager:
@@ -10,7 +10,7 @@ class Manager:
         self.runner_count = runner_count
         self.task_in_progress = 0
         self.queue = deque()
-        self.lock = Lock()
+        self.lock = RLock()
         self.alive = False
         self.runners = []
         for i in range(self.runner_count):
@@ -48,6 +48,3 @@ class Manager:
 
         for runner in self.runners:
             runner.join()
-
-
-# def historical_task
