@@ -1,0 +1,1 @@
+from parse_data.manager import Manager

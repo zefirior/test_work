@@ -1,0 +1,16 @@
+version: '2'
+services:
+
+  db:
+    image: postgres:11
+    volumes:
+      - psql_data:/var/lib/postgresql/data
+    expose:
+      - "5432"
+    ports:
+      - "6000:5432"
+    restart: always
+
+volumes:
+  psql_data:
+
