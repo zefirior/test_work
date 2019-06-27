@@ -30,37 +30,7 @@ PYTHONPATH=$PYTHONPATH:./ python ./parse_data/parse.py --runner 8 --ticker_file 
 4. Up application
 
 ```bash
-
+FLASK_APP=test_work.app_factory:init_app flask run
 ```
 
-4. Check [url](http://localhost:5000).
-
-....
-## Migration-usecase
-0) Start and connect to test server
-    ```bash
-    docker-compose up -d test
-    docker-compose exec test bash
-    ```
-....
-   Next commands execute in this shell - in this `test`-container
-....
-1) Refesh your local DB according structure in project
-
-    ```bash
-    flask db upgrade
-    ```
-
-2) Change DB-structure in `thupoll/models.py`
-
-3) Autogenerate migration
-    ```bash
-    flask db migrate
-    ```
-
-4) Migrate local DB:
-
-    ```bash
-    flask db upgrade
-    ```
-
+5. Check [url](http://localhost:5000).
