@@ -68,7 +68,7 @@ def get_price_for_date(ticker: str, price_date):
     ).one_or_none()
 
 
-def analitics(ticker: str, start, end):
+def get_analitics(ticker: str, start, end):
     start = get_price_for_date(ticker, start)
     end = get_price_for_date(ticker, end)
 

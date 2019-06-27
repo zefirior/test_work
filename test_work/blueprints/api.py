@@ -7,9 +7,9 @@ from test_work.controllers.ticker import (
     get_price,
     get_insider,
     get_trade,
-    analitics
+    get_analitics
 )
-from test_work.controllers.delta import delta
+from test_work.controllers.delta import get_delta
 from test_work.utils import CustomJSONEncoder, date_field, strptime_or_none
 
 blue = Blueprint("api", __name__)
@@ -44,7 +44,7 @@ def trade(ticker, insider_id):
 def ticker_analitics(ticker, date_from, date_to):
     start = strptime_or_none(date_from)
     end = strptime_or_none(date_to)
-    return jsonify(result=analitics(ticker, start, end))
+    return jsonify(result=get_analitics(ticker, start, end))
 
 
 map_price_column = {
@@ -64,5 +64,5 @@ map_price_column = {
     ),
 })
 def ticker_delta(ticker, value, type):
-    result = delta(ticker, value, map_price_column[type])
+    result = get_delta(ticker, value, map_price_column[type])
     return jsonify(request=result)

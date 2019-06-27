@@ -2,9 +2,7 @@ version: '2'
 services:
 
   db:
-    build:
-      context: .
-      dockerfile: ./docker/postgres/Dockerfile
+    image: postgres:11
     volumes:
       - psql_data:/var/lib/postgresql/data
     expose:

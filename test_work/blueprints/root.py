@@ -7,9 +7,9 @@ from test_work.controllers.ticker import (
     get_price,
     get_insider,
     get_trade,
-    analitics
+    get_analitics
 )
-from test_work.controllers.delta import delta
+from test_work.controllers.delta import get_delta
 from test_work.utils import date_field, strptime_or_none
 
 blue = Blueprint("root", __name__)
@@ -53,20 +53,13 @@ def trades(ticker, insider_id):
 def ticker_analitics(ticker, date_from, date_to):
     start = strptime_or_none(date_from)
     end = strptime_or_none(date_to)
-    data = analitics(ticker, start, end)
+    data = get_analitics(ticker, start, end)
 
     return render_template(
         "analitics.html",
         analitics=data,
         ticker=ticker,
     )
-
-map_price_column = {
-    "open": "start",
-    "high": "high",
-    "low": "low",
-    "close": "last",
-}
 
 
 map_price_column = {
@@ -86,7 +79,7 @@ map_price_column = {
     ),
 })
 def ticker_delta(ticker, value, type):
-    data = delta(ticker, value, map_price_column[type])
+    data = get_delta(ticker, value, map_price_column[type])
     return render_template(
         "delta.html",
         data=data,

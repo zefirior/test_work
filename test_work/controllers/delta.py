@@ -1,7 +1,7 @@
 from test_work import models as m
 
 
-def delta(ticker, limit, price_type):
+def get_delta(ticker, limit, price_type):
     conn = m.db.engine.connect()
 
     conn.execute(

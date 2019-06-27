@@ -4,7 +4,7 @@ from environs import Env
 
 class Environ(Env):
     DEFAULT_DB = 'postgresql://postgres@localhost:6000/postgres'
-    DEFAULT_URL = '0.0.0.0:7000'
+    DEFAULT_URL = '127.0.0.1:5000'
 
     @property
     def db_url(self):
