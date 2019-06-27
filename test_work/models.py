@@ -72,7 +72,7 @@ class Insider(_BaseModel):
     def marshall(self) -> dict:
         return dict(
             id=self.id,
-            name=self.code,
+            name=self.name,
         )
 
 
@@ -88,7 +88,7 @@ class InsiderTicker(_BaseModel):
     owner_type = sa.Column(sa.String)
 
     insider = relationship(Insider)
-    ticker = relationship(Ticker)
+    ticker = relationship(Ticker, backref="insider_ticker")
 
     def marshall(self) -> dict:
         return dict(
@@ -131,8 +131,9 @@ class Trade(_BaseModel):
     def marshall(self) -> dict:
         return dict(
             id=self.id,
-            insider=self.insider_ticker.insider.code,
+            insider=self.insider_ticker.insider.name,
             ticker=self.insider_ticker.ticker.code,
+            transaction_type=self.transaction_type.code,
             shares_traded=self.shares_traded,
             last_price=self.last_price,
             shares_held=self.shares_held,

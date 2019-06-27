@@ -1,0 +1,13 @@
+<!doctype html>
+<title>Тестовое задание</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+    <div><a href="{{ url_for("root.tickers") }}">Home</a></div>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>Акции</h1>
+{% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <td>Название акции</td>
+            </tr>
+        </thead>
+          {% for ticker in tickers %}
+            <tr>
+                <td><a href="{{ url_for("root.price", ticker=ticker["code"]) }}">
+                    {{ ticker["code"] }}
+                </a></td>
+            </tr>
+          {% endfor %}
+    </table>
+{% endblock %}

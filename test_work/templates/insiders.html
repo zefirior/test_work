@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{{ ticker }}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+{#    <a>Владельцы </a>#}
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>Имя</td>
+                <td>Тип влдения</td>
+                <td>Отношение</td>
+            </tr>
+        </thead>
+          {% for insider in insiders %}
+            <tr>
+                <td>
+                    <a href="{{ url_for("root.trades", ticker=ticker, insider_id=insider["id"]) }}">
+                        {{ insider["name"] }}
+                    </a>
+                </td>
+                <td>{{ insider["owner_type"] }}</td>
+                <td>{{ insider["relation"] }}</td>
+            </tr>
+          {% endfor %}
+    </table>
+{% endblock %}

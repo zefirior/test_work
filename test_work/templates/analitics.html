@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{{ ticker }}</h1>
+{% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <td>Открытие</td>
+                <td>Минимум</td>
+                <td>Максимум</td>
+                <td>Закрытие</td>
+            </tr>
+        </thead>
+          {% if analitics %}
+            <tr>
+                <td>{{ analitics["start"] }}</td>
+                <td>{{ analitics["low"] }}</td>
+                <td>{{ analitics["high"] }}</td>
+                <td>{{ analitics["last"] }}</td>
+            </tr>
+          {% endif %}
+    </table>
+{% endblock %}

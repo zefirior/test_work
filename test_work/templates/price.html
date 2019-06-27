@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{{ ticker }}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+    <a href="{{ url_for("root.insider", ticker=ticker) }}">
+        Владельцы компании
+    </a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>Дата</td>
+                <td>Открытие</td>
+                <td>Минимум</td>
+                <td>Максимум</td>
+                <td>Закрытие</td>
+            </tr>
+        </thead>
+          {% for price in prices %}
+            <tr>
+                <td>{{ price["price_date"] }}</td>
+                <td>{{ price["start"] }}</td>
+                <td>{{ price["low"] }}</td>
+                <td>{{ price["high"] }}</td>
+                <td>{{ price["last"] }}</td>
+            </tr>
+          {% endfor %}
+    </table>
+{% endblock %}

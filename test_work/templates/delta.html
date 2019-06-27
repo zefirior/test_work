@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{{ ticker }}</h1>
+{% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <td>Начало периода</td>
+                <td>Конец периода</td>
+            </tr>
+        </thead>
+          {% if data %}
+            <tr>
+                <td>{{ data["date_from"] }}</td>
+                <td>{{ data["date_to"] }}</td>
+            </tr>
+          {% endif %}
+    </table>
+{% endblock %}
