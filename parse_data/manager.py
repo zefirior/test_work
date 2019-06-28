@@ -5,6 +5,10 @@ from threading import Thread, RLock
 
 
 class Manager:
+    """ Thread manager. Expect increasing task number
+    in the queue while working. Terminates execution when
+    the queue is empty and there are no tasks in progress."""
+    
     def __init__(self, runner_count=1, interval=0.1):
         self.interval = interval
         self.runner_count = runner_count
